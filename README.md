@@ -20,7 +20,7 @@ To run the experiments, please run the following files:
 - To run and evaluate the multi-agent occlusion inference pipeline:
 `scripts/run_full_pipeline.sh`.
 
-Running the above code will reproduce the numbers in the tables reported in the paper. To visualize the qualitative results, see `src/driver_sensor_model/visualize_cvae.ipynb` (Fig. 3) and `src/full_pipeline/main_visualize_full_pipeline.py` (Figs. 4 and 10).
+Running the above code will reproduce the numbers in the tables reported in the paper. To visualize the qualitative results, see `src/driver_sensor_model/visualize_cvae.ipynb` (Fig. 3) and `src/full_pipeline/main_visualize_full_pipeline.py` (Fig. 4).
 
 ## Data Split
 To process the data, ego vehicle IDs were sampled from the GL intersection in the [INTERACTION dataset](https://interaction-dataset.com/). For each of the 60 available scenes, a maximum of 100 ego vehicles were chosen. The train, validation, and test set were randomly split based on the ego vehicle IDs accounting for 85%, 5% and 10% of the total number of ego vehicles, respectively. Due to computational constraints, the training set for the driver sensor model was further reduced to have 70,001 contiguous driver sensor trajectories or 2,602,332 time steps of data. The validation set used to select the driver sensor model and the sensor fusion scheme contained 4,858 contiguous driver sensor trajectories or 180,244 time steps and 289 ego vehicles. The results presented in this paper were reported on the test set, which consists of 9,884 contiguous driver sensor trajectories or 365,201 time steps and 578 ego vehicles.
