@@ -3,8 +3,23 @@ Multi-agent occlusion inference using observed driver behaviors. A driver sensor
 
 M. Itkina, Y.-J. Mun, K. Driggs-Campbell, and M. J. Kochenderfer. "Multi-Agent Variational Occlusion Inference Using People as Sensors". ArXiv, 2021.
 
-![image](https://user-images.githubusercontent.com/24766091/132141370-373c073e-bc24-4482-911f-32d3f9581ff0.png)
-**Figure:** Our proposed occlusion inference approach. The learned driver sensor model maps behaviors of visible drivers (cyan) to an OGM of the environment ahead of them (gray). The inferred OGMs are then fused into the ego vehicle’s (green) map. Our goal is to infer the presence or absence of occluded agents (blue). Driver 1 is waiting to turn left, occluding oncoming traffic from the ego vehicle’s view. Driver 1 being stopped should indicate to the ego that there may be oncoming traffic; and thus it is not safe to proceed with its right turn. Driver 2 is driving at a constant speed. This observed behavior is not enough to discern whether the vehicle is traveling in traffic or on an open road. We aim to encode such intuition into our occlusion inference algorithm.
+<p align="center">
+<img src="https://user-images.githubusercontent.com/24766091/132141370-373c073e-bc24-4482-911f-32d3f9581ff0.png" width="638.5" height="364.5">
+</p>
+
+**Approach Overview:** Our proposed occlusion inference approach. The learned driver sensor model maps behaviors of visible drivers (cyan) to an OGM of the environment ahead of them (gray). The inferred OGMs are then fused into the ego vehicle’s (green) map. Our goal is to infer the presence or absence of occluded agents (blue). Driver 1 is waiting to turn left, occluding oncoming traffic from the ego vehicle’s view. Driver 1 being stopped should indicate to the ego that there may be oncoming traffic; and thus it is not safe to proceed with its right turn. Driver 2 is driving at a constant speed. This observed behavior is not enough to discern whether the vehicle is traveling in traffic or on an open road. We aim to encode such intuition into our occlusion inference algorithm.
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/24766091/140591979-0de3e512-0b55-47d9-9087-701dba8a162e.gif" width="333" height="330">   <img src="https://user-images.githubusercontent.com/24766091/140591977-54b7dce0-300e-43d5-8427-54013f137bd2.gif" width="332" height="330">
+</p>
+
+**Results (Example Scenario 1):** The ego vehicle (green) is waiting to turn right. Observed driver 33 is waiting for a gap in cross-traffic to make a left turn, blocking the view of the ego vehicle. Our occlusion inference algorithms produces occupancy estimates as soon as 1 second of trajectory data is accumulated for an observed driver. While driver 33 is stopped (left), our algorithm estimates occupied space in the region ahead of driver 33, encompassing occluded driver 92. When driver 33 accelerates (right), this space is inferred to be free, indicating to the ego vehicle to proceed with its right turn. These results match our intuition for these observed behaviors.  
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/24766091/140591984-198e3775-24d6-4cb6-98c9-17ec9a13c42e.gif" width="319" height="330">   <img src="https://user-images.githubusercontent.com/24766091/140591974-216415d2-5b3a-44dd-aaad-0e528df046c6.gif" width="316.5" height="330">
+</p>
+
+**Results (Example Scenario 2):** Observed driver 106 is waiting to turn left ahead of the ego vehicle (green). Observed drivers 102, 113, and 116 are also waiting for a gap in cross-traffic. While drivers 106, 102, 113, and 116 are all stopped (left), our algorithm estimates highly occupied space surrounding occluded driver 112 due to multiple agreeing measurements. When driver 106 starts their left turn (right), this space is estimated to be more free, indicating to the ego vehicle that it may be safe to complete its maneuver (e.g., a U-turn). 
 
 ## Instructions
 The code reproduces the qualitative and quantitative experiments in the paper. The required dependencies are listed in dependencies.txt. Note that the INTERACTION dataset for the GL intersection has to be downloaded from: https://interaction-dataset.com/ and placed into the `data` directory. Then, a directory: `data/INTERACTION-Dataset-DR-v1_1` should exist.
