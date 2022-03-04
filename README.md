@@ -1,7 +1,7 @@
 # MultiAgentVariationalOcclusionInference
 Multi-agent occlusion inference using observed driver behaviors. A driver sensor model is learned using a conditional variational autoencoder which maps an observed driver trajectory to the space ahead of the driver, represented as an occupancy grid map (OGM). Information from multiple drivers is fused into an ego vehicle's map using evidential theory. See our [video](https://www.youtube.com/watch?v=cTHl5nDBNBM) and [paper](https://arxiv.org/abs/2109.02173) for more details:
 
-M. Itkina, Y.-J. Mun, K. Driggs-Campbell, and M. J. Kochenderfer. "Multi-Agent Variational Occlusion Inference Using People as Sensors". ArXiv, 2021.
+M. Itkina, Y.-J. Mun, K. Driggs-Campbell, and M. J. Kochenderfer. "Multi-Agent Variational Occlusion Inference Using People as Sensors". In International Conference on Robotics and Automation (ICRA), 2022.
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/24766091/132141370-373c073e-bc24-4482-911f-32d3f9581ff0.png" width="638.5" height="364.5">
