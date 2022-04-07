@@ -15,7 +15,7 @@ except:
 
 from utils import dataset_reader
 from utils import dataset_types
-from utils import dict_utils
+# from utils import dict_utils
 from utils import map_vis_lanelet2
 from utils.grid_utils import SceneObjects, global_grid, AllObjects, generateLabelGrid, generateSensorGrid
 from utils.dataset_types import Track, MotionState
